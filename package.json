@@ -1,0 +1,20 @@
+{
+  "name": "nlw-journey-node",
+  "version": "1.0.0",
+  "description": "API de um planejamento de viagem",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "fastify": "^4.28.1"
+  }
+}
