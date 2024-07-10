@@ -18,11 +18,12 @@ export async function createTrip(app: FastifyInstance) {
           ends_at: z.coerce.date(),
           owner_name: z.string(),
           owner_email: z.string().email(),
+          emails_to_invite: z.array(z.string().email())
         }),
       },
     },
     async (req, reply) => {
-      const { destination, starts_at, ends_at, owner_name, owner_email } = req.body
+      const { destination, starts_at, ends_at, owner_name, owner_email, emails_to_invite } = req.body
 
       if (dayjs(starts_at).isBefore(new Date())) {
         throw new Error('Start date must be in the future')
@@ -39,11 +40,18 @@ export async function createTrip(app: FastifyInstance) {
           starts_at,
           ends_at,
           participants: {
-            create: {
-              name: owner_name,
-              email: owner_email,
-              is_owner: true,
-              is_confirmed: true,
+            createMany: {
+              data: [
+                {
+                  name: owner_name,
+                  email: owner_email,
+                  is_owner: true,
+                  is_confirmed: true,
+                },
+                ...emails_to_invite.map((email) => ({
+                  email,
+                }))
+              ]
             }
           }
         },
