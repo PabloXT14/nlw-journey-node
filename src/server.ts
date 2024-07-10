@@ -1,26 +1,18 @@
 import fastify from 'fastify'
-import { prisma } from './lib/prisma'
+import { createTrip } from './routes/create-trip'
+import {
+  serializerCompiler,
+  validatorCompiler,
+} from 'fastify-type-provider-zod'
 
 const app = fastify()
 const PORT = 3333
 
-app.post('/register', async (req, reply) => {
-  await prisma.trip.create({
-    data: {
-      destination: 'Santa Catarina',
-      starts_at: new Date(),
-      ends_at: new Date(),
-    },
-  })
+// Add schema validator and serializer
+app.setValidatorCompiler(validatorCompiler)
+app.setSerializerCompiler(serializerCompiler)
 
-  return reply.status(201).send({ message: 'Registro cadastrado com sucesso!' })
-})
-
-app.get('/list', async (req, reply) => {
-  const trips = await prisma.trip.findMany()
-
-  return reply.status(200).send({ trips })
-})
+app.register(createTrip)
 
 app
   .listen({
