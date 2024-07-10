@@ -32,14 +32,24 @@ export async function createTrip(app: FastifyInstance) {
         throw new Error('End date must be after start date')
       }
 
+      // Create trip and owner participant
       const trip = await prisma.trip.create({
         data: {
           destination,
           starts_at,
           ends_at,
+          participants: {
+            create: {
+              name: owner_name,
+              email: owner_email,
+              is_owner: true,
+              is_confirmed: true,
+            }
+          }
         },
       })
 
+      // Send email
       const mail = await getMailClient()
 
       const message = await mail.sendMail({
