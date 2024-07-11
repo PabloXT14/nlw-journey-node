@@ -8,6 +8,7 @@ import {
 import { confirmTrip } from './routes/confirm-trip'
 import { confirmParticipant } from './routes/confirme-participant'
 import { createTrip } from './routes/create-trip'
+import { createActivity } from './routes/create-activity'
 
 const app = fastify()
 const PORT = 3333
@@ -23,6 +24,7 @@ app.setSerializerCompiler(serializerCompiler)
 app.register(createTrip)
 app.register(confirmTrip)
 app.register(confirmParticipant)
+app.register(createActivity)
 
 app
   .listen({
