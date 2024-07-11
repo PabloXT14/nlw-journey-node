@@ -3,7 +3,7 @@
     src=".github/nlw-journey-logo.png"
     title="Logo NLW Journey"
     alt="Logo NLW Journey"
-    width="30px"
+    width="64px"
   />
   NLW Journey (Node)
 </h1>
