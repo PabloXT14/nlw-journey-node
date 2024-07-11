@@ -83,8 +83,6 @@ export async function createTrip(app: FastifyInstance) {
         subject: `Confirme sua viagem para ${destination} em ${formattedStartDate}`,
         html: `
           <div style="font-family: sans-serif; font-size: 16px; line-height: 1.6;">
-            <p>Olá, ${owner_name}!</p>
-            <p></p>
             <p>Você solicitou a criação de uma viagem para <strong>${destination}</strong> nas datas de <strong>${formattedStartDate}</strong> até <strong>${formattedEndDate}</strong>.</p>
             <p></p>
             <p>Para confirmar sua viagem, clique no link abaixo:</p>

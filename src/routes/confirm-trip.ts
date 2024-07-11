@@ -65,8 +65,6 @@ export async function confirmTrip(app: FastifyInstance) {
             subject: `Confirme sua presença na viagem para ${trip.destination} em ${formattedStartDate}`,
             html: `
             <div style="font-family: sans-serif; font-size: 16px; line-height: 1.6;">
-              <p>Olá, ${participant.name}!</p>
-              <p></p>
               <p>Você foi convidado(a) para participar de uma viagem para <strong>${trip.destination}</strong> nas datas de <strong>${formattedStartDate}</strong> até <strong>${formattedEndDate}</strong>.</p>
               <p></p>
               <p>Para confirmar sua presença na viagem, clique no link abaixo:</p>
