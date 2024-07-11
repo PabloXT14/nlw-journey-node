@@ -4,7 +4,7 @@
   "description": "API de um planejamento de viagem",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/server.ts",
+    "dev": "tsx watch --env-file .env src/server.ts",
     "lint:check": "eslint src --ext .ts,.js",
     "lint:fix": "eslint src --ext .ts,.js --fix"
   },

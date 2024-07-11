@@ -5,6 +5,8 @@ import {
   validatorCompiler,
 } from 'fastify-type-provider-zod'
 
+import { env } from './env'
+import { errorHandler } from './error-handler'
 import { confirmTrip } from './routes/confirm-trip'
 import { confirmParticipant } from './routes/confirme-participant'
 import { createActivity } from './routes/create-activity'
@@ -17,10 +19,8 @@ import { getParticipant } from './routes/get-participant'
 import { getParticipants } from './routes/get-participants'
 import { getTripDetails } from './routes/get-trip-details'
 import { updateTrip } from './routes/update-trip'
-import { errorHandler } from './error-handler'
 
 const app = fastify()
-const PORT = 3333
 
 app.register(cors, {
   origin: 'http://localhost:3000',
@@ -47,6 +47,6 @@ app.register(getParticipant)
 
 app
   .listen({
-    port: PORT,
+    port: env.PORT,
   })
-  .then(() => console.log(`Server running on port ${PORT}`))
+  .then(() => console.log(`Server running on port ${env.PORT}`))
