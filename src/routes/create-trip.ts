@@ -2,6 +2,7 @@ import { FastifyInstance } from 'fastify'
 import { ZodTypeProvider } from 'fastify-type-provider-zod'
 import nodemailer from 'nodemailer'
 import { z } from 'zod'
+import { ClientError } from '../errors/client-error'
 import { dayjs } from '../lib/dayjs'
 import { getMailClient } from '../lib/mail'
 import { prisma } from '../lib/prisma'
@@ -32,11 +33,11 @@ export async function createTrip(app: FastifyInstance) {
       } = req.body
 
       if (dayjs(starts_at).isBefore(new Date())) {
-        throw new Error('Start date must be in the future')
+        throw new ClientError('Start date must be in the future')
       }
 
       if (dayjs(ends_at).isBefore(dayjs(starts_at))) {
-        throw new Error('End date must be after start date')
+        throw new ClientError('End date must be after start date')
       }
 
       // Create trip and owner participant
