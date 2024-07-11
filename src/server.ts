@@ -13,6 +13,7 @@ import { createLink } from './routes/create-link'
 import { createTrip } from './routes/create-trip'
 import { getActivities } from './routes/get-activities'
 import { getLinks } from './routes/get-links'
+import { getParticipant } from './routes/get-participant'
 import { getParticipants } from './routes/get-participants'
 import { getTripDetails } from './routes/get-trip-details'
 import { updateTrip } from './routes/update-trip'
@@ -39,6 +40,7 @@ app.register(getParticipants)
 app.register(createInvite)
 app.register(updateTrip)
 app.register(getTripDetails)
+app.register(getParticipant)
 
 app
   .listen({
