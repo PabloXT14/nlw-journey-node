@@ -8,6 +8,7 @@ import {
 import { confirmTrip } from './routes/confirm-trip'
 import { confirmParticipant } from './routes/confirme-participant'
 import { createActivity } from './routes/create-activity'
+import { createInvite } from './routes/create-invite'
 import { createLink } from './routes/create-link'
 import { createTrip } from './routes/create-trip'
 import { getActivities } from './routes/get-activities'
@@ -33,6 +34,7 @@ app.register(getActivities)
 app.register(createLink)
 app.register(getLinks)
 app.register(getParticipants)
+app.register(createInvite)
 
 app
   .listen({
